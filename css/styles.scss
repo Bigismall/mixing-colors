@@ -15,13 +15,11 @@ $colors: (
 
 $colorBorderWidth: 1rem;
 
-
 body {
   width: 100vw;
   height: 100vh;
   @include reset-space;
   background-image: linear-gradient(135deg, #f5f7fa 0%, #b2c4e0 100%);
-
 }
 
 .layout {
@@ -31,7 +29,6 @@ body {
   height: 100%;
   grid-template-columns: 1fr 2fr 1fr;
   list-style: none;
-
 
   @include e(item) {
     @include reset-space;
