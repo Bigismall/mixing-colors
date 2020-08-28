@@ -5,45 +5,82 @@
   <title></title>
   <link href="css/styles.css"
         rel="stylesheet" />
+  <script async
+          src="js/mix-colors.js"
+          type="text/javascript"></script>
 </head>
 <body>
 <ul class="layout">
   <li class="layout__item">
     <ul class="colors">
       <li class="colors__item">
-        <button class="colors__color colors__color--yellow">yellow</button>
+        <button class="colors__color colors__color--yellow js-color"
+                data-color="yellow"
+                data-portion="0">yellow
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--red">red</button>
+        <button class="colors__color colors__color--red js-color"
+                data-color="red"
+                data-portion="0">red
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--pink">pink</button>
+        <button class="colors__color colors__color--pink js-color"
+                data-color="pink"
+                data-portion="0">pink
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--blue">blue</button>
+        <button class="colors__color colors__color--blue js-color"
+                data-color="blue"
+                data-portion="0">blue
+        </button>
       </li>
     </ul>
   </li>
-  <li class="layout__item"></li>
+  <li class="layout__item">
+    <ul class="canvas">
+      <li class="canvas__item">
+        <h1 class="title">Mix the colors!</h1>
+      </li>
+      <li class="canvas__item">
+        <div class="bucket js-bucket"></div>
+      </li>
+      <li class="canvas__item">
+        <button class="clear js-clear">clear</button>
+      </li>
+    </ul>
+  </li>
   <li class="layout__item">
     <ul class="colors">
       <li class="colors__item">
-        <button class="colors__color colors__color--cyan">cyan</button>
+        <button class="colors__color colors__color--cyan js-color"
+                data-color="cyan"
+                data-portion="0">cyan
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--green">green</button>
+        <button class="colors__color colors__color--green js-color"
+                data-color="green"
+                data-portion="0">green
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--white">white</button>
+        <button class="colors__color colors__color--white js-color"
+                data-color="white"
+                data-portion="0">white
+        </button>
       </li>
       <li class="colors__item">
-        <button class="colors__color colors__color--black">black</button>
+        <button class="colors__color colors__color--black js-color"
+                data-color="black"
+                data-portion="0">black
+        </button>
       </li>
     </ul>
   </li>
 </ul>
 
-<script>
-</script>
 </body>
 </html>

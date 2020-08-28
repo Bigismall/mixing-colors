@@ -1,3 +1,4 @@
+@import "typography";
 @import "sanitize";
 @import "mixins";
 
@@ -12,10 +13,15 @@ $colors: (
   "black": #000000,
 ) !default;
 
+$colorBorderWidth: 1rem;
+
+
 body {
   width: 100vw;
   height: 100vh;
   @include reset-space;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #b2c4e0 100%);
+
 }
 
 .layout {
@@ -23,15 +29,30 @@ body {
   display: grid;
   width: 100%;
   height: 100%;
-  border: 1px solid red;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   list-style: none;
 
 
   @include e(item) {
     @include reset-space;
-    border: 1px solid blue;
   }
+}
+
+.canvas {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  @include reset-space;
+  list-style: none;
+  grid-template-rows: 1fr 2fr 1fr;
+
+  @include e(item) {
+    display: grid;
+    @include reset-space;
+    align-items: center;
+    justify-items: center;
+  }
+
 }
 
 .colors {
@@ -40,28 +61,90 @@ body {
   list-style: none;
   width: 100%;
   height: 100%;
+
   @include e(item) {
     display: grid;
     @include reset-space;
-    border: 1px solid green;
     align-items: center;
     justify-items: center;
   }
+
+  //TODO - instead of border width, deal with border color
   @include e(color) {
     display: block;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    border: 5px solid map-get($colors, 'black');
+    width: 90%;
+    height: 90%;
+    border-radius: 2rem;
+    font-size: 2rem;
+    border-width: 0;
+    border-style: dotted;
+    outline: none;
+
+    &[data-portion="0"] {
+      border-width: 0;
+    }
+    &[data-portion="1"] {
+      border-top-width: $colorBorderWidth;
+    }
+    &[data-portion="2"] {
+      border-top-width: $colorBorderWidth;
+      border-right-width: $colorBorderWidth;
+    }
+    &[data-portion="3"] {
+      border-top-width: $colorBorderWidth;
+      border-right-width: $colorBorderWidth;
+      border-bottom-width: $colorBorderWidth;
+    }
+    &[data-portion="4"] {
+      border-top-width: $colorBorderWidth;
+      border-right-width: $colorBorderWidth;
+      border-bottom-width: $colorBorderWidth;
+      border-left-width: $colorBorderWidth;
+    }
+
     @each $name, $color in $colors {
       @include m($name) {
+
         background-color: $color;
+        background-image: radial-gradient(circle at 35% 25%, lighten($color, 20), $color);
+        border-color: darken($color, 10);
+        //box-shadow: 3px 3px 15px 0 rgba(0, 0, 0, 0.35);
+        box-shadow: 4px 4px 10px 0 rgba(100, 100, 150, 0.15);
       }
     }
 
     @include m('black') {
-      color: map-get($colors, 'white')
+      color: map-get($colors, 'white');
+      border-color: lighten(map-get($colors, 'black'), 50);
     }
 
   }
+}
+
+.title {
+  //color: darken(#b2c4e0, 10);
+  color: #f5f7fa;
+  font-size: 3rem;
+  text-shadow: 1px 1px 5px darken(#b2c4e0, 30);
+}
+
+.bucket {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 30% 70% 26% 74% / 30% 30% 70% 70%;
+  box-shadow: 4px 4px 10px 0 rgba(100, 100, 150, 0.15);
+}
+
+.clear {
+  display: block;
+  width: 90%;
+  height: 90%;
+  border-radius: 2rem;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  background-image: linear-gradient(30deg, #ffffff 25%, #b2e1ff 25%, #b2e1ff 50%, #ffffff 50%, #ffffff 75%, #b2e1ff 75%, #b2e1ff 100%);
+  background-size: 60.00px 35px;
+  box-shadow: 4px 4px 10px 0 rgba(100, 100, 150, 0.15);
 }
