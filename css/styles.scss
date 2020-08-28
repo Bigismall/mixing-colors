@@ -1,0 +1,67 @@
+@import "sanitize";
+@import "mixins";
+
+$colors: (
+  "yellow": #ffed00,
+  "red": #ff0000,
+  "pink": #ff00AB,
+  "blue": #0047ab,
+  "cyan": #00edff,
+  "green": #00b500,
+  "white": #ffffff,
+  "black": #000000,
+) !default;
+
+body {
+  width: 100vw;
+  height: 100vh;
+  @include reset-space;
+}
+
+.layout {
+  @include reset-space;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+  grid-template-columns: 1fr 4fr 1fr;
+  list-style: none;
+
+
+  @include e(item) {
+    @include reset-space;
+    border: 1px solid blue;
+  }
+}
+
+.colors {
+  display: grid;
+  @include reset-space;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  @include e(item) {
+    display: grid;
+    @include reset-space;
+    border: 1px solid green;
+    align-items: center;
+    justify-items: center;
+  }
+  @include e(color) {
+    display: block;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 5px solid map-get($colors, 'black');
+    @each $name, $color in $colors {
+      @include m($name) {
+        background-color: $color;
+      }
+    }
+
+    @include m('black') {
+      color: map-get($colors, 'white')
+    }
+
+  }
+}
